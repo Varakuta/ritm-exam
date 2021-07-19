@@ -14,6 +14,7 @@
         "laravel/sanctum": "^2.6",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.5",
+        "rappasoft/laravel-livewire-tables": "^1.11",
         "spatie/laravel-permission": "^4.2"
     },
     "require-dev": {
