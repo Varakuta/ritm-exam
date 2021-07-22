@@ -35,6 +35,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
         Route::post('/servers/store/', [\App\Http\Controllers\ServerController::class, 'store'])->name('servers.store');
         Route::get('/servers/delete/{id}', [\App\Http\Controllers\ServerController::class, 'delete'])->name('servers.delete');
     });
+
+    Route::get('/dashboard/bad-guys', function(){
+        return view('bad-guys.table');
+    })->name('badguys');
 });
 
 /*Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
