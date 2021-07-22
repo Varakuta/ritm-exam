@@ -1,3 +1,6 @@
+<div class="w-full text-right">
+    <x-jet-button wire:click="showModal">ADD</x-jet-button>
+</div>
 <x-jet-modal wire:model="modalOpened">
     <div class="px-6 py-4">
         <div class="text-lg">Новое нарушение!</div>
@@ -49,7 +52,7 @@
             <div class="py4">
                 <x-jet-button type="submit">SAVE</x-jet-button>
             </div>
-            <x-jet-input wire:model="bad.user_id" type="text" name="user_id" value="" />
+            <x-jet-input wire:model="bad.user_id" type="hidden" name="user_id" value="" />
         </form>
     </div>
     <div class="px-6 py-4 bg-gray-100 text-right">

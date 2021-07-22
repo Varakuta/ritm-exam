@@ -32,7 +32,7 @@ class BadGuysTableComponent extends DataTableComponent
     public string $defaultSortDirection = 'desc';
 
     public array $bulkActions = [
-        'selectToRemove' => 'Remove',
+
     ];
 
 
@@ -48,6 +48,9 @@ class BadGuysTableComponent extends DataTableComponent
 
     public function mount()
     {
+        if(auth()->user()->is_admin){
+            $this->bulkActions = ['selectToRemove' => 'Remove',];
+        }
         $this->bad = new BadGuy();
         $this->servers = \App\Models\Server::all();
         $this->rule = Rule::all();
@@ -108,5 +111,10 @@ class BadGuysTableComponent extends DataTableComponent
                 [1=>'Mute', 2=>'Jail', 3=>'Ban']
             )
         ];
+    }
+
+    public function showModal()
+    {
+        $this->modalOpened = true;
     }
 }
