@@ -17,6 +17,7 @@ class ServerController extends Controller
      */
     public function index()
     {
+        //$this->authorize('view', Server::class);
         $servers = Server::orderBy('sort')->get();
         return view('server.index', ['servers'=>$servers]);
     }
@@ -28,6 +29,7 @@ class ServerController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Server::class);
         $users = User::all();
         return view('server.create', compact('users'));
     }
@@ -52,6 +54,7 @@ class ServerController extends Controller
      */
     public function show(Server $server)
     {
+        $this->authorize('view', $server);
         return view('server.show', compact('server'));
     }
 
@@ -63,6 +66,7 @@ class ServerController extends Controller
      */
     public function edit(Server $server)
     {
+        $this->authorize('view', $server);
         $users = User::all();
         return view('server.edit',  compact('server', 'users'));
     }
@@ -75,6 +79,7 @@ class ServerController extends Controller
      */
     public function update(Server $server, CreateServerRequest $request)
     {
+        $this->authorize('update', $server);
         $newServer = $request->validated();
         if (!isset($newServer['active'])){
             $newServer['active'] = 0;
